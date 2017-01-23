@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 07, 2017 at 06:54 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Host: localhost
+-- Generation Time: Jan 23, 2017 at 06:10 PM
+-- Server version: 5.5.54-0ubuntu0.14.04.1
+-- PHP Version: 5.6.30-1+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -141,7 +141,7 @@ INSERT INTO `data_set` (`id_data_set`, `kemiringan_lereng`, `kondisi_tanah`, `ba
 --
 
 CREATE TABLE `data_tes` (
-  `id_data_tes` int(8) NOT NULL,
+  `id_data_tes` int(11) NOT NULL,
   `id_desa` int(3) NOT NULL,
   `id_user` int(5) NOT NULL,
   `tanggal` date NOT NULL,
@@ -160,6 +160,13 @@ CREATE TABLE `data_tes` (
   `usaha_mitigasi` varchar(6) NOT NULL,
   `hasil` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_tes`
+--
+
+INSERT INTO `data_tes` (`id_data_tes`, `id_desa`, `id_user`, `tanggal`, `kemiringan_lereng`, `kondisi_tanah`, `batuan_penyusun_lereng`, `curah_hujan`, `tata_air_lereng`, `vegetasi`, `pola_tanam`, `penggalian_dan_pemotongan_lereng`, `pencetakan_kolam`, `drainase`, `pembangunan_konstruksi`, `kepadatan_penduduk`, `usaha_mitigasi`, `hasil`) VALUES
+(1, 7, 3, '2017-01-22', 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Sedang', 'Tinggi', 'Rawan');
 
 -- --------------------------------------------------------
 
@@ -203,7 +210,7 @@ CREATE TABLE `groups` (
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Akses Administrator'),
-(2, 'members', 'Akses General User');
+(2, 'user', 'Akses General User');
 
 -- --------------------------------------------------------
 
@@ -249,8 +256,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `phone`, `alamat`, `user_img`, `ip_address`, `last_login`, `salt`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `active`, `created_on`) VALUES
-(1, 'Admin', 'admin@admin.com', 'admin', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '082333817317', 'Jln Cempaka No 38 Jember', 'usr_img_5e2f99c.png', '127.0.0.1', 1483708825, '', NULL, NULL, NULL, NULL, 1, 1268889823),
-(3, 'dani bavana', 'dani@mail.com', 'dani', '$2y$08$HoeGPXExwnPKR8vIvhM7nule6tnrCX6cjGPyZsfwv5HNuVtwvPlOq', '083857909007', 'jember', 'usr_img_59ada65.png', '::1', 1483685468, NULL, NULL, NULL, NULL, NULL, 1, 1483685458);
+(1, 'Admin', 'admin@admin.com', 'admin', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '082333817317', 'Jln Cempaka No 38 Jember', 'usr_img_5e2f99c.png', '127.0.0.1', 1485167732, '', NULL, NULL, NULL, NULL, 1, 1268889823),
+(3, 'dani bavana', 'dani@mail.com', 'dani', '$2y$08$HoeGPXExwnPKR8vIvhM7nule6tnrCX6cjGPyZsfwv5HNuVtwvPlOq', '083857909007', 'jember', 'usr_img_59ada65.png', '::1', 1485142686, NULL, NULL, NULL, NULL, NULL, 1, 1483685458);
 
 -- --------------------------------------------------------
 
@@ -325,6 +332,11 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `data_tes`
+--
+ALTER TABLE `data_tes`
+  MODIFY `id_data_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `groups`
 --
