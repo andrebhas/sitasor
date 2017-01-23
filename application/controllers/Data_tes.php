@@ -8,6 +8,8 @@ class Data_tes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Data_tes_model');
+        $this->load->model('Users_model');
+        $this->load->model('Desa_model');
         if (!$this->ion_auth->logged_in())
         {
             redirect('auth/login', 'refresh');
@@ -22,7 +24,7 @@ class Data_tes extends CI_Controller
 
         $data = array(
             'title'       => 'Data_tes' ,
-            'content'     => 'data_tes/data_tes_list', 
+            'content'     => 'histori/data_tes_list', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
             
@@ -78,7 +80,7 @@ class Data_tes extends CI_Controller
         $this->breadcrumbs->push('tambah', '/data_tes/create');
         $data = array(
             'title'       => 'Data_tes' ,
-            'content'     => 'data_tes/data_tes_form', 
+            'content'     => 'histori/data_tes_form', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
 

@@ -33,8 +33,8 @@
                 <thead>
                     <tr>
                         <th width="50px">No</th>
-						<th>Id Desa</th>
-						<th>Id User</th>
+						<th>Desa</th>
+						<th>Pengintput</th>
 						<th>Tanggal</th>
 						<th>Kemiringan Lereng</th>
 						<th>Kondisi Tanah</th>
@@ -61,8 +61,8 @@
             ?>
                     <tr>
 						<td><?php echo ++$start ?></td>
-						<td><?php echo $data_tes->id_desa ?></td>
-						<td><?php echo $data_tes->id_user ?></td>
+                        <td><?php echo $this->Desa_model->get_by_id($data_tes->id_desa)->nama_desa ?></td>
+                        <td><?php echo $this->Users_model->get_by_id($data_tes->id_user)->username ?></td>
 						<td><?php echo $data_tes->tanggal ?></td>
 						<td><?php echo $data_tes->kemiringan_lereng ?></td>
 						<td><?php echo $data_tes->kondisi_tanah ?></td>

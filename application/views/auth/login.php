@@ -120,7 +120,7 @@
 
           <!-- Footer -->
           <div class="footer text-muted">
-            &copy; 2016. <a href="#"><?php echo $this->config->item('nama_sistem') ?></a> by <a href="http://bhas.web.id" target="_blank">Andre Bhaskoro</a>
+            &copy; 2016. <a href="#"><?php echo $this->config->item('nama_sistem') ?></a> by <a href="" target="_blank">Dani Bavana</a>
           </div>
           <!-- /footer -->
 
