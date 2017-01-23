@@ -87,10 +87,11 @@
                       Remember
                     </label>
                   </div>
-
+                  <!--
                   <div class="col-sm-6 text-right">
                    <a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
                   </div>
+                  -->
                 </div>
               </div>
 
@@ -105,12 +106,12 @@
                 <li><a href="#" class="btn border-slate-600 text-slate-600 btn-flat btn-icon btn-rounded"><i class="icon-github"></i></a></li>
                 <li><a href="#" class="btn border-info text-info btn-flat btn-icon btn-rounded"><i class="icon-twitter"></i></a></li>
               </ul>
-              -->
 
 
               <div class="content-divider text-muted form-group"><span>Don't have an account?</span></div>
               <a href="login_registration.html" class="btn btn-default btn-block content-group">Sign up</a>
               <span class="help-block text-center no-margin">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+              -->
             </div>
 
  
