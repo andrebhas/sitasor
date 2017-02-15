@@ -43,7 +43,7 @@ class Data_tes extends CI_Controller
         if ($row) {
             $data = array(
                 'title'       => 'Data_tes' ,
-                'content'     => 'data_tes/data_tes_read', 
+                'content'     => 'histori/data_tes_read', 
                 'breadcrumbs' => $this->breadcrumbs->show(),
                 'user'        => $user ,
                 
@@ -69,7 +69,7 @@ class Data_tes extends CI_Controller
             $this->load->view('layout/layout', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('data_tes'));
+            redirect(site_url('histori'));
         }
     }
 
@@ -151,7 +151,7 @@ class Data_tes extends CI_Controller
         if ($row) {
             $data = array(
                 'title'       => 'Data_tes' ,
-                'content'     => 'data_tes/data_tes_form', 
+                'content'     => 'histori/data_tes_form', 
                 'breadcrumbs' => $this->breadcrumbs->show(),
                 'user'        => $user ,
 
@@ -179,7 +179,7 @@ class Data_tes extends CI_Controller
             $this->load->view('layout/layout', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('data_tes'));
+            redirect(site_url('histori'));
         }
     }
     

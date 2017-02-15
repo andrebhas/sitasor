@@ -154,14 +154,19 @@ class Klasifikasi extends CI_Controller {
 				/*echo $prob_aman." = ".$kemiringan_lereng_aman." * ". $kondisi_tanah_aman." * ". $batuan_penyusun_lereng_aman." * ". $curah_hujan_aman." * ". $tata_air_lereng_aman." * ". $vegetasi_aman." * ". $pola_tanam_aman." * ". $penggalian_dan_pemotongan_lereng_aman." * ". $pencetakan_kolam_aman." * ". $drainase_aman." * ". $pembangunan_konstruksi_aman." * ". $kepadatan_penduduk_aman." * ". $usaha_mitigasi_aman."<br>";
 				echo $prob_rawan." = ".$kemiringan_lereng_rawan." * ". $kondisi_tanah_rawan." * ". $batuan_penyusun_lereng_rawan." * ". $curah_hujan_rawan." * ". $tata_air_lereng_rawan." * ". $vegetasi_rawan." * ". $pola_tanam_rawan." * ". $penggalian_dan_pemotongan_lereng_rawan." * ". $pencetakan_kolam_rawan." * ". $drainase_rawan." * ". $pembangunan_konstruksi_rawan." * ". $kepadatan_penduduk_rawan." * ". $usaha_mitigasi_rawan."<br>";
 				*/
-				if ($prob_aman > $prob_rawan) {
+
+				$jumlah = $prob_aman + $prob_rawan;
+				$hasil_prob_aman =  $prob_aman / $jumlah;
+				$hasil_prob_rawan =  $prob_rawan / $jumlah;
+				
+				if ($hasil_prob_aman > $hasil_prob_rawan) {
 					$prediksi = "Aman";
 				} else {
 					$prediksi = "Rawan";
 				}
 				
-				$data["prob_aman"] = $prob_aman;
-				$data["prob_rawan"] = $prob_rawan;
+				$data["prob_aman"] = $hasil_prob_aman;
+				$data["prob_rawan"] = $hasil_prob_rawan;
 				$data["prediksi"] = $prediksi;
 				$this->load->view('layout/layout', $data);
         }

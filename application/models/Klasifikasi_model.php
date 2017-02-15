@@ -16,9 +16,9 @@ class Klasifikasi_model extends CI_Model {
     			select count(hasil) 
     			from data_set 
     			where `$parameter`= '$val_param' AND hasil='$hasil'
-    		) / COUNT(hasil) as hasil_bagi
+    		) / COUNT($parameter) as hasil_bagi
 			FROM `data_set`
-			WHERE hasil = '$hasil' ";
+			WHERE $parameter = '$val_param' ";
     	$query=$this->db->query($sql);
         return $query->row();
     }

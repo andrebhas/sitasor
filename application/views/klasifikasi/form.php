@@ -50,7 +50,9 @@
                                                     <h4 class="modal-title" id="111">Kemiringan Lereng</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Kemiringan lereng 36-40% <br>
+                                                    <b>Sedang :</b> Kemiringan lereng 31-36% <br>
+                                                    <b>Rendah :</b> Kemiringan lereng 21-30% <br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -81,7 +83,10 @@
                                                     <h4 class="modal-title" id="2">Kondisi Tanah </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Kondisi tanah/batuan penyusun lereng umumnya merupakan lereng yang tersusun oleh tanah lempung yang mudah mengembang apabila jenuh air dan terdapat bidang kontras <br>
+                                                    <b>Sedang :</b> Lereng tersusun oleh jenis tanah lempungyang mudah mengembang, tapi tidak ada bidang kontras dengan batuan di bawahnya <br>
+                                                    <b>Rendah :</b> Lereng tersusun oleh jeniss tanah liat dan berpasir yang mudah, namun terdapat bidang kontras dengan batuan di bawahnya <br>
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -112,7 +117,9 @@
                                                     <h4 class="modal-title" id="3"> Batuan Penyusun Lereng </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Lereng yang tersusun oleh batuan dan terlihat banyak struktur retakan<br>
+                                                    <b>Sedang :</b> Lereng tersusun oleh batuan dan terlihat ada struktur retakan, tetapi lapisan batuan tidak miring ke arah luar lereng<br>
+                                                    <b>Rendah :</b> Lereng tersusun oleh batuan dan tanah namun ada struktur retakan/kekar pada batuan<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -145,7 +152,9 @@
                                                     <h4 class="modal-title" id="4">Curah Hujan</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> >2500 mm/th<br>
+                                                    <b>Sedang :</b> 1000-2500 mm/th<br>
+                                                    <b>Rendah :</b> <1000 mm/th <br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -177,7 +186,9 @@
                                                     <h4 class="modal-title" id="5">Tata Air Lereng</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Sering muncul rembesan-rembesan air atau mata air pada lereng, terutama pada tingkat antara batuan kedap dengan lapisan tanah yang permeable<br>
+                                                    <b>Sedang :</b> Jarang muncul rembesan-rembesan air atau mata air pada lereng atau bidang kontak antara batuan kedap dengan lapisan tanah yang permeable<br>
+                                                    <b>Rendah :</b> Tidak terdapat rembesan-rembesan air atau mata air pada lereng atau bidang kontak antara batuan kedap dengan lapisan tanah yang permeable<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -208,7 +219,9 @@
                                                     <h4 class="modal-title" id="6">Vegetasi </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Alang-alang, rumput-rumputa, tumbuhan semak, tumbuhan perdu<br>
+                                                    <b>Sedang :</b> Tumbuhan berdaun jarum seperti pinus<br>
+                                                    <b>Rendah :</b> Tumbuhan berakar tunjang yang perakarannya menyebar seperti jati, kemiri, kosambi, laban, dilingsem, mindi, johar, bangur, banyan, mahoni, ranghas, sono keling, trengguli, tayuman, asam jawa dan pilang<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -238,7 +251,10 @@
                                                     <h4 class="modal-title" id="7">Pola Tanam </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Lereng ditanami dengan pola tanam yang tidak tepat dan sangat sensitif<br>
+                                                    <b>Sedang :</b> Lereng ditanami dengan pola tanah yang tepat dan sangat intensif<br>
+                                                    <b>Rendah :</b> Lereng ditanami dengan pola tanaman yang tepat dan serta tidak intensif<br>
+                                                
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -272,7 +288,9 @@
                                                     <h4 class="modal-title" id="8">Penggalian Dan Pemotongan Lereng</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Intensitas penggalian/pemotongan lereng tinggi tanpa memperhatikan struktur perlapisan tanah/batuan pada lereng dan tanpa perhitungan analisis kestabilan lereng<br>
+                                                    <b>Sedang :</b> Intensitas penggalian/pemotongan lereng rendah, serta memperhatikan srtuktur perlapisan tanah/batuan pada lereng dan perhitungan analisis kestabilan lereng<br>
+                                                    <b>Rendah :</b> Tidak melakukan penggalian/pemotongan lereng<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -302,7 +320,9 @@
                                                     <h4 class="modal-title" id="9">Pencetakan Kolam </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Dilakukan pencetakan kolam yang dapat mengakibatkan merembesnya air kolam ke lereng<br>
+                                                    <b>Sedang :</b> Dilakuan pencetakan kolam tetapi terdapat perembesan air kolam ke dalam lereng<br>
+                                                    <b>Rendah :</b> Tidak melakukan pencetakan kolam<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -334,7 +354,9 @@
                                                     <h4 class="modal-title" id="10">Drainase </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Sistem drainase tidak memadai, tidak ada usaha-usaha untuk memperbaiki<br>
+                                                    <b>Sedang :</b> Sistem drainase agak memadai, ada usaha-usaha untuk memperbaiki drainase<br>
+                                                    <b>Rendah :</b> Sistem drainase memadai, ada usaha-usaha untuk memelihara saluran drainase<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -364,7 +386,9 @@
                                                     <h4 class="modal-title" id="11">Pembangunan Konstruksi </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Dilakukan pembangunan konstruksi dan beban yang terlalu besar dan melampaui daya dukung (bangunan lebih dari 2 lantai dengan konstruksi beton pada tanah jenis lempung).<br>
+                                                    <b>Sedang :</b> Dilakukan pembangunan konstruksi dan beban yang masih sedikit, tetapi belum melampaui daya dukung (bangunan 1 lantai pada tanah lempung)<br>
+                                                    <b>Rendah :</b> Dilakukan pembangunan konstruksi dan beban yang masih sedikit, dan belum melampaui daya dukung tanah, atau tidak ada pembangunan konstruksi<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -394,7 +418,9 @@
                                                     <h4 class="modal-title" id="12">Kepadatan Penduduk </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> >50 jiwa/ha<br>
+                                                    <b>Sedang :</b> 20-50 jiwa/ha<br>
+                                                    <b>Rendah :</b> <20 jiwa/ha<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
@@ -424,7 +450,9 @@
                                                     <h4 class="modal-title" id="13">Usaha Mitigasi  </h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                    <b>Tinggi :</b> Tidak ada usaha mitigasi bencana<br>
+                                                    <b>Sedang :</b> Terdapat usaha mitigasi bencana tapi belum terkoordinasi dan melembaga<br>
+                                                    <b>Rendah :</b> Terdapat usaha mitigasi bencana yang sudah terorganisir dan terkoordinasi dengan baik<br>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button  class="btn btn-default" data-dismiss="modal">Close</button>
