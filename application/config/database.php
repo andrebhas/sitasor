@@ -8,8 +8,13 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
+<<<<<<< HEAD
 	'password' => '',
 	'database' => 'sitasor',
+=======
+	'password' => 'toor',
+	'database' => 'db_sitasor',
+>>>>>>> 34e0299dea0aac4f9918c82358b91cd5cbc48f9f
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
