@@ -57,8 +57,6 @@
 							echo anchor(site_url('users/read/'.$users->user_id),'Detail'); 
 							echo ' | '; 
 							echo anchor(site_url('users/update/'.$users->user_id),'Update'); 
-							echo ' | '; 
-							echo anchor(site_url('users/delete/'.$users->user_id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
 						?>
 						</td>
 					</tr>

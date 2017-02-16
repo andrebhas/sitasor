@@ -19,9 +19,6 @@
 
         <div class="panel-body"> 
             <div class="row">
-                <div class="col-md-5 text-left">
-                    <?php echo anchor(site_url('data_tes/create'), '<i class="fa fa-plus-square"></i> Tambah', 'class="btn btn-default btn-xs" data-popup="tooltip-custom" title="tambah data"'); ?>
-				</div>
                 <div class="col-md-7 text-center">
                     <div style="margin-top: 4px"  id="message">
                         <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
@@ -85,9 +82,7 @@
                             <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#approve" data-id="<?= $data_tes->id_data_tes?>" data-desa="<?= $this->Desa_model->get_by_id($data_tes->id_desa)->nama_desa ?>" data-tanggal="<?= $data_tes->tanggal ?>" data-hasil="<?= $data_tes->hasil ?>">Approve</button>
                         <?php
                             } else {
-							echo anchor(site_url('data_tes/update/'.$data_tes->id_data_tes),'Update'); 
-							echo ' | '; 
-							echo anchor(site_url('data_tes/delete/'.$data_tes->id_data_tes),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+							echo anchor(site_url('data_tes/delete/'.$data_tes->id_data_tes),'Delete','class="btn btn-primary btn-xs" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
                             }
                         ?>
 						</td>

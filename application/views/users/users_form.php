@@ -85,7 +85,7 @@
                         </div> 
                         <?php if ($button == 'Update'): ?>
                                 <button type="submit" class="btn btn-success"><?php echo $button ?></button> 
-                                <a href="<?php if($this->Users_model->get_group($user->id)){echo site_url('users');}else{echo site_url('dashboard');}  ?>" class="btn btn-default">Cancel</a>
+                                <a href="<?php if($this->Users_model->get_group($user->id)->group_id == 1){echo site_url('users');}else{echo site_url('dashboard');}  ?>" class="btn btn-default">Cancel</a>
                                 <a data-toggle="modal" href="#modal_password" class="btn btn-warning" > Ubah Password </a> 
                         <?php else: ?>
                                 <div class="form-group">
@@ -97,7 +97,7 @@
                                     <input type="password" class="form-control" name="password2" id="password2" placeholder="Konfirmasi Password" />
                                 </div>
                                 <button type="submit" class="btn btn-success"><?php echo $button ?></button> 
-                                <a href="<?php if($this->Users_model->get_group($user->id)){echo site_url('users');}else{echo site_url('dashboard');} ?>" class="btn btn-default">Cancel</a>
+                                <a href="<?php if($this->Users_model->get_group($user->id)->group_id == 1){echo site_url('users');}else{echo site_url('dashboard');} ?>" class="btn btn-default">Cancel</a>
                         <?php endif ?>                        
                             
                     </div>
