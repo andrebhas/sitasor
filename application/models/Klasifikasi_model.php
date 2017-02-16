@@ -23,6 +23,20 @@ class Klasifikasi_model extends CI_Model {
         return $query->row();
     }
 
+	public function get_data_by_date($id_desa)
+	{
+		$tahun_sekarang = date('Y');
+		$bulan_sekarang = date('m');
+		$this->db->where('id_desa', $id_desa);
+		$this->db->where('MONTH(tanggal)', $bulan_sekarang);
+		$this->db->where('YEAR(tanggal)', $tahun_sekarang );
+		if($this->db->get('data_tes')->result()){
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
 }
 
 /* End of file Klasifikasi_model.php */

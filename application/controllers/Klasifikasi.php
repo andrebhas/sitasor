@@ -25,7 +25,6 @@ class Klasifikasi extends CI_Controller {
         $this->breadcrumbs->push('tambah', 'dashboard');
         $data = array(
             'title'       => 'Klasifikasi' ,
-            'content'     => 'klasifikasi/form', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
             'button' => 'Klasifikasi',
@@ -50,6 +49,12 @@ class Klasifikasi extends CI_Controller {
 		    'usaha_mitigasi' => set_value('usaha_mitigasi'),
 		    'hasil' => set_value('hasil'),
 		);
+		if($this->Klasifikasi_model->get_data_by_date($id_desa) == TRUE ){
+			$data['content'] = 'klasifikasi/sudah_input';
+		} else {
+			$data['content'] = 'klasifikasi/form';
+		}
+		
         $this->load->view('layout/layout', $data);
 	}
 
