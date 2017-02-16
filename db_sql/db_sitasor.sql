@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 16, 2017 at 06:20 PM
+-- Generation Time: Feb 17, 2017 at 12:48 AM
 -- Server version: 5.5.54-0ubuntu0.14.04.1
 -- PHP Version: 5.6.30-1+deb.sury.org~trusty+1
 
@@ -49,6 +49,7 @@ CREATE TABLE `data_set` (
 --
 
 INSERT INTO `data_set` (`id_data_set`, `kemiringan_lereng`, `kondisi_tanah`, `batuan_penyusun_lereng`, `curah_hujan`, `tata_air_lereng`, `vegetasi`, `pola_tanam`, `penggalian_dan_pemotongan_lereng`, `pencetakan_kolam`, `drainase`, `pembangunan_konstruksi`, `kepadatan_penduduk`, `usaha_mitigasi`, `hasil`) VALUES
+(0, 'Rendah', 'Sedang', 'Tinggi', 'Sedang', 'Tinggi', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Tinggi', 'Sedang', 'Rendah', 'Sedang', 'Aman'),
 (1, 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Rendah', 'Sedang', 'Sedang', 'Rendah', 'Sedang', 'Rendah', 'Rendah', 'Sedang', 'Rawan'),
 (2, 'Sedang', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Tinggi', 'Rendah', 'Rendah', 'Rawan'),
 (3, 'Rendah', 'Tinggi', 'Sedang', 'Sedang', 'Tinggi', 'Tinggi', 'Rendah', 'Rendah', 'Tinggi', 'Rendah', 'Rendah', 'Rendah', 'Tinggi', 'Rawan'),
@@ -131,8 +132,7 @@ INSERT INTO `data_set` (`id_data_set`, `kemiringan_lereng`, `kondisi_tanah`, `ba
 (80, 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Sedang', 'Sedang', 'Rendah', 'Sedang', 'Rawan'),
 (81, 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Sedang', 'Sedang', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Aman'),
 (82, 'Tinggi', 'Tinggi', 'Sedang', 'Sedang', 'Tinggi', 'Tinggi', 'Sedang', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Aman'),
-(83, 'Tinggi', 'Tinggi', 'Sedang', 'Sedang', 'Rendah', 'Tinggi', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Aman'),
-(84, 'Tinggi', 'Tinggi', 'Sedang', 'Sedang', 'Tinggi', 'Tinggi', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Aman');
+(83, 'Tinggi', 'Tinggi', 'Sedang', 'Sedang', 'Rendah', 'Tinggi', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Rendah', 'Aman');
 
 -- --------------------------------------------------------
 
@@ -167,9 +167,7 @@ CREATE TABLE `data_tes` (
 --
 
 INSERT INTO `data_tes` (`id_data_tes`, `id_desa`, `id_user`, `tanggal`, `kemiringan_lereng`, `kondisi_tanah`, `batuan_penyusun_lereng`, `curah_hujan`, `tata_air_lereng`, `vegetasi`, `pola_tanam`, `penggalian_dan_pemotongan_lereng`, `pencetakan_kolam`, `drainase`, `pembangunan_konstruksi`, `kepadatan_penduduk`, `usaha_mitigasi`, `hasil`, `status`) VALUES
-(1, 7, 3, '2017-01-22', 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Sedang', 'Tinggi', 'Rawan', 0),
-(2, 4, 3, '2017-01-24', 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Tinggi', 'Sedang', 'Sedang', 'Rendah', 'Sedang', 'Rendah', 'Rendah', 'Rendah', 'Rawan', 0),
-(3, 7, 1, '2017-02-10', 'Rendah', 'Sedang', 'Tinggi', 'Sedang', 'Rendah', 'Sedang', 'Tinggi', 'Sedang', 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Rendah', 'Rawan', 0);
+(6, 7, 3, '2017-02-16', 'Sedang', 'Sedang', 'Sedang', 'Tinggi', 'Sedang', 'Tinggi', 'Sedang', 'Sedang', 'Tinggi', 'Rendah', 'Sedang', 'Tinggi', 'Sedang', 'Aman', 0);
 
 -- --------------------------------------------------------
 
@@ -247,8 +245,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `phone`, `alamat`, `user_img`, `ip_address`, `last_login`, `salt`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `active`, `created_on`, `id_desa`) VALUES
-(1, 'Admin', 'admin@admin.com', 'admin', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '082333817317', 'Jln Cempaka No 38 Jember', 'usr_img_e9352a4.jpg', '127.0.0.1', 1487243734, '', NULL, NULL, NULL, NULL, 1, 1268889823, 0),
-(3, 'dani bavana', 'dani@mail.com', 'dani', '$2y$08$HoeGPXExwnPKR8vIvhM7nule6tnrCX6cjGPyZsfwv5HNuVtwvPlOq', '083857909007', 'jember', 'usr_img_f5c1223.png', '::1', 1487243463, NULL, NULL, NULL, NULL, NULL, 1, 1483685458, 7);
+(1, 'Adminaa', 'admin@admin.com', 'admin', '$2y$08$r3SweaRSmnw7QKvWaGzkWea3.WHbIJMwp.bP630dB2iUihBLM7DSO', '082333817317', 'Jln Cempaka No 38 Jember', 'usr_img_e9352a4.jpg', '127.0.0.1', 1487264831, '', NULL, NULL, NULL, NULL, 1, 1268889823, 0),
+(3, 'Dhani Bavanaaa', 'dani@mail.com', 'dani', '$2y$08$cXWMEW3Rn7FpkTkjegiejeF9HDr/6IfBnmolBc1iAmyEybErA4xs.', '083857909007', 'jember', 'usr_img_f5c1223.png', '::1', 1487264904, NULL, NULL, NULL, NULL, NULL, 1, 1483685458, 7),
+(4, 'panti', 'panti@bla.com', 'panti', '$2y$08$F1gcquRuI/3IRi1nnsH4j.LcD0My2G0YXSlQxf3xIswVSG5GMNzw.', '9831419', 'panti coy', 'usr_img_280770d.png', '127.0.0.1', 1487264932, NULL, NULL, NULL, NULL, NULL, 1, 1487264440, 1);
 
 -- --------------------------------------------------------
 
@@ -268,7 +267,8 @@ CREATE TABLE `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
-(4, 3, 2);
+(4, 3, 2),
+(5, 4, 2);
 
 --
 -- Indexes for dumped tables
@@ -321,7 +321,7 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `data_tes`
 --
 ALTER TABLE `data_tes`
-  MODIFY `id_data_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_data_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `groups`
 --
