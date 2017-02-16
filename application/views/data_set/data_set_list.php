@@ -19,9 +19,6 @@
 
         <div class="panel-body"> 
             <div class="row">
-                <div class="col-md-5 text-left">
-                    <?php echo anchor(site_url('data_set/create'), '<i class="fa fa-plus-square"></i> Tambah', 'class="btn btn-default btn-xs" data-popup="tooltip-custom" title="tambah data"'); ?>
-				</div>
                 <div class="col-md-7 text-center">
                     <div style="margin-top: 4px"  id="message">
                         <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
