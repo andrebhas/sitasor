@@ -1,7 +1,3 @@
-<?php 
-    $ci =& get_instance();;
-?>
-
 <div class="content">
 
     <div class="panel panel-success">
@@ -18,22 +14,13 @@
 
             <form action="<?php echo $action; ?>" method="post">
                 <div class="form-group">
-                    <label for="int">Desa <?php echo form_error('id_desa') ?></label>
-                    <select class="form-control" name="id_desa" id="id_desa" >
-                        <option value="">Pilih .. </option>
-                        <?php foreach ($data_desa as $d): ?>
-                            <option value="<?php echo $d->id_desa ?>" <?php if($id_desa == $d->id_desa){echo 'selected';}  ?>> <?php echo $d->nama_desa ?> </option>
-                        <?php endforeach ?>
-                    </select>
+                    <label for="text">Lokasi Desa<?php echo form_error('id_desa') ?></label>
+                    <input type="hidden" name="id_desa" id="id_desa" value="<?php echo $id_desa;?>">
+                    <input type="text" readonly class="form-control" value="<?php echo $nama_desa;?>">
                 </div>
-                <div class="form-group">
-                    <label for="int">User <?php echo form_error('id_user') ?></label>
-                    <input type="text" class="form-control" name="id_user" id="id_user" value="<?php echo $user->id; ?>" />
-                </div>
-                <div class="form-group">
-                    <label for="date">Tanggal <?php echo form_error('tanggal') ?></label>
-                    <input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php echo date("Y-m-d"); ?>" />
-                </div>
+                <input type="hidden" class="form-control" name="id_user" id="id_user" value="<?php echo $user->id; ?>" />
+                <input type="hidden" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php echo date("Y-m-d"); ?>" />
+
                 <div class="row">
                      <div class="col-md-6">
                         <div class="form-group">

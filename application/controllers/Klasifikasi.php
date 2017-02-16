@@ -6,10 +6,10 @@ class Klasifikasi extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
-        $this->load->model('Desa_model');
         $this->load->model('Klasifikasi_model');
 		$this->load->model('Users_model');
 		$this->load->model('Data_tes_model');
+		$this->load->model('Desa_model');
         if (!$this->ion_auth->logged_in())
         {
             redirect('auth/login', 'refresh');
@@ -19,7 +19,8 @@ class Klasifikasi extends CI_Controller {
 	public function index()
 	{
 		$user = $this->ion_auth->user()->row();
-		$desa = $this->Desa_model->get_all();
+		$id_desa = $this->Desa_model->get_by_id($user->id_desa)->id_desa;
+		$nama_desa = $this->Desa_model->get_by_id($user->id_desa)->nama_desa;
         $this->breadcrumbs->push('Klasifikasi', '/klasifikasi');
         $this->breadcrumbs->push('tambah', 'dashboard');
         $data = array(
@@ -27,11 +28,11 @@ class Klasifikasi extends CI_Controller {
             'content'     => 'klasifikasi/form', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
-            'data_desa'   => $desa ,
             'button' => 'Klasifikasi',
             'action' => site_url('klasifikasi/hitung_klasifikasi'),
 		    'id_data_tes' => set_value('id_data_tes'),
-		    'id_desa' => set_value('id_desa'),
+		    'id_desa' => $id_desa,
+			'nama_desa' => $nama_desa,
 		    'id_user' => set_value('id_user'),
 		    'tanggal' => set_value('tanggal'),
 		    'kemiringan_lereng' => set_value('kemiringan_lereng'),
@@ -150,10 +151,6 @@ class Klasifikasi extends CI_Controller {
 				// probabilitas
 				$prob_aman = $kemiringan_lereng_aman * $kondisi_tanah_aman * $batuan_penyusun_lereng_aman * $curah_hujan_aman * $tata_air_lereng_aman * $vegetasi_aman * $pola_tanam_aman * $penggalian_dan_pemotongan_lereng_aman * $pencetakan_kolam_aman * $drainase_aman * $pembangunan_konstruksi_aman * $kepadatan_penduduk_aman * $usaha_mitigasi_aman;
 				$prob_rawan = $kemiringan_lereng_rawan * $kondisi_tanah_rawan * $batuan_penyusun_lereng_rawan * $curah_hujan_rawan * $tata_air_lereng_rawan * $vegetasi_rawan * $pola_tanam_rawan * $penggalian_dan_pemotongan_lereng_rawan * $pencetakan_kolam_rawan * $drainase_rawan * $pembangunan_konstruksi_rawan * $kepadatan_penduduk_rawan * $usaha_mitigasi_rawan;
-
-				/*echo $prob_aman." = ".$kemiringan_lereng_aman." * ". $kondisi_tanah_aman." * ". $batuan_penyusun_lereng_aman." * ". $curah_hujan_aman." * ". $tata_air_lereng_aman." * ". $vegetasi_aman." * ". $pola_tanam_aman." * ". $penggalian_dan_pemotongan_lereng_aman." * ". $pencetakan_kolam_aman." * ". $drainase_aman." * ". $pembangunan_konstruksi_aman." * ". $kepadatan_penduduk_aman." * ". $usaha_mitigasi_aman."<br>";
-				echo $prob_rawan." = ".$kemiringan_lereng_rawan." * ". $kondisi_tanah_rawan." * ". $batuan_penyusun_lereng_rawan." * ". $curah_hujan_rawan." * ". $tata_air_lereng_rawan." * ". $vegetasi_rawan." * ". $pola_tanam_rawan." * ". $penggalian_dan_pemotongan_lereng_rawan." * ". $pencetakan_kolam_rawan." * ". $drainase_rawan." * ". $pembangunan_konstruksi_rawan." * ". $kepadatan_penduduk_rawan." * ". $usaha_mitigasi_rawan."<br>";
-				*/
 
 				$jumlah = $prob_aman + $prob_rawan;
 				$hasil_prob_aman =  $prob_aman / $jumlah;

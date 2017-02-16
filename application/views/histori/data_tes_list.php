@@ -80,12 +80,16 @@
 						<td><?php echo $data_tes->hasil ?></td>
 						<td style="text-align:center" width="200px">
 						<?php 
-							echo anchor(site_url('data_tes/read/'.$data_tes->id_data_tes),'Detail'); 
-							echo ' | '; 
+                            if($this->ion_auth->is_admin()){
+                        ?>
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#approve" data-id="<?= $data_tes->id_data_tes?>" data-desa="<?= $this->Desa_model->get_by_id($data_tes->id_desa)->nama_desa ?>" data-tanggal="<?= $data_tes->tanggal ?>" data-hasil="<?= $data_tes->hasil ?>">Approve</button>
+                        <?php
+                            } else {
 							echo anchor(site_url('data_tes/update/'.$data_tes->id_data_tes),'Update'); 
 							echo ' | '; 
 							echo anchor(site_url('data_tes/delete/'.$data_tes->id_data_tes),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
-						?>
+                            }
+                        ?>
 						</td>
 					</tr>
             <?php
@@ -98,8 +102,60 @@
     </div>
 </div>
 
+<div class="modal fade" id="approve" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Approve dan Simpan Ke Data Set</h4>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="<?php echo site_url('data_tes/approve')?>">
+          <input type="hidden" class="form-control" id="id" name="id">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Desa</label>
+            <input type="text" disabled class="form-control" id="nama_desa">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Tanggal</label>
+            <input type="text" disabled class="form-control" id="tanggal">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Hasil Klasifikasi</label>
+            <select name="hasil" id="hasil" class="form-control">
+                <option value="Aman">Aman</option>
+                <option value="Rawan">Rawan</option>
+            </select>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
+$('#approve').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var id = button.data('id') 
+  var desa = button.data('desa') 
+  var tanggal = button.data('tanggal') 
+  var hasil = button.data('hasil') 
+  var modal = $(this)
+  $('#id').val(id)
+  $('#nama_desa').val(desa)
+  $('#tanggal').val(tanggal)
+  if(hasil == 'Aman'){
+    var index = "0"
+  } else {
+    var index = "1"
+  }
+  document.getElementById("hasil").selectedIndex = index;
+})
+
 $(function() {
 
     $.extend( $.fn.dataTable.defaults, {

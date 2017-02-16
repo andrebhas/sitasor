@@ -8,6 +8,7 @@ class Data_tes extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Data_tes_model');
+        $this->load->model('Data_set_model');
         $this->load->model('Users_model');
         $this->load->model('Desa_model');
         if (!$this->ion_auth->logged_in())
@@ -215,6 +216,34 @@ class Data_tes extends CI_Controller
             redirect(site_url('data_tes'));
         }
     }
+
+    public function approve()
+    {
+        $data_tes = $this->Data_tes_model->get_by_id($this->input->post('id',TRUE));
+        $data = array(
+                'kemiringan_lereng' => $data_tes->kemiringan_lereng,
+				'kondisi_tanah' => $data_tes->kondisi_tanah,
+				'batuan_penyusun_lereng' => $data_tes->batuan_penyusun_lereng,
+				'curah_hujan' => $data_tes->curah_hujan,
+				'tata_air_lereng' => $data_tes->tata_air_lereng,
+				'vegetasi' => $data_tes->vegetasi,
+				'pola_tanam' => $data_tes->pola_tanam,
+				'penggalian_dan_pemotongan_lereng' => $data_tes->penggalian_dan_pemotongan_lereng,
+				'pencetakan_kolam' => $data_tes->pencetakan_kolam,
+				'drainase' => $data_tes->drainase,
+				'pembangunan_konstruksi' => $data_tes->pembangunan_konstruksi,
+				'kepadatan_penduduk' => $data_tes->kepadatan_penduduk,
+				'usaha_mitigasi' => $data_tes->usaha_mitigasi,
+				'hasil' => $this->input->post('hasil',TRUE),
+        );
+        $data_status = array(
+            'status' => '1',
+        );
+        $tambah_dataset = $this->Data_set_model->insert($data);
+        $ganti_status = $this->Data_tes_model->update($this->input->post('id',TRUE),$data_status);
+        redirect('data_tes','refresh');
+    }
+
     
     public function delete($id) 
     {

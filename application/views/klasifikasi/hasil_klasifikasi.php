@@ -19,9 +19,21 @@
 
         <div class="panel-body"> 
                 <div class="col-md-6">
-                    Detail<br>
-                    Penginput : <?php echo $penginput->username ?><br>
-                    Tanggal Input : <?php echo $tanggal ?>
+                    <table>
+                        <tr>
+                            <td colspan="3">DEATIL</td>
+                        <td>
+                        <tr>
+                            <td>Penginput</td> <td width="100px" align="center"> : </td><td><?php echo $penginput->username ?></td>
+                        </tr>
+                        <tr>
+                            <td>Desa</td> <td width="100px" align="center"> : </td><td><?php echo $nama_desa ?></td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal</td> <td width="100px" align="center"> : </td><td><?php echo $tanggal ?></td>
+                        </tr>
+                    </table> 
+                    <br>
                     <br>
                     <table class="table datatable-responsive table-sm table-bordered" id="mytable">
                         <thead>

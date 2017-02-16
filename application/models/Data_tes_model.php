@@ -19,6 +19,7 @@ class Data_tes_model extends CI_Model
     function get_all()
     {
         $this->db->order_by($this->id, $this->order);
+        $this->db->where('status', '0');
         return $this->db->get($this->table)->result();
     }
 
