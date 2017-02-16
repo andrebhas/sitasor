@@ -35,8 +35,6 @@
 						<th>Phone</th>
 						<th>Alamat</th>
 						<th>User Img</th>
-						<th>Last Login</th>
-                        <th>Level</th>
 						<th>Action</th>
                     </tr>
                 </thead>
@@ -54,17 +52,13 @@
 						<td><?php echo $users->phone ?></td>
 						<td><?php echo $users->alamat ?></td>
 						<td><img width="35" height="35" src="<?= base_url('images/users/'. $users->user_img)?>"></td>
-						<td><?php echo date('d/m/Y', $users->last_login); ?></td>
-                        <td><?php $level = $this->ion_auth->get_users_groups($users->id)->result(); foreach ($level as $lvl) {
-                            echo $lvl->name." , ";
-                        }?></td>
 						<td style="text-align:center" width="200px">
 						<?php 
-							echo anchor(site_url('users/read/'.$users->id),'Detail'); 
+							echo anchor(site_url('users/read/'.$users->user_id),'Detail'); 
 							echo ' | '; 
-							echo anchor(site_url('users/update/'.$users->id),'Update'); 
+							echo anchor(site_url('users/update/'.$users->user_id),'Update'); 
 							echo ' | '; 
-							echo anchor(site_url('users/delete/'.$users->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+							echo anchor(site_url('users/delete/'.$users->user_id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
 						?>
 						</td>
 					</tr>

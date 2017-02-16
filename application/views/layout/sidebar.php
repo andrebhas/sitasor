@@ -32,6 +32,11 @@
 								<!-- Main -->
 								
 								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+<?php if ($this->ion_auth->is_admin()): ?>
+								<li>
+									<a href="<?php echo base_url('users.html') ?>"><i class="icon-users"></i> <span>Kelola Users</span></a>
+								</li>
+<?php else: ?>
 								<li><a href="<?php echo base_url('dashboard.html') ?>"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 								<li><a href="<?php echo base_url('desa.html') ?>"><i class="icon-home4"></i> <span>Desa</span></a></li>
 								<li>
@@ -42,18 +47,6 @@
 										<li><a href="<?php echo base_url('data_tes.html') ?>"><i class="fa fa-sitemap"></i> <span>Histori</span></a></li>
 									</ul>
 								</li>
-
-<?php if ($this->ion_auth->is_admin()): ?>
-								<li>
-									<a href="#"><i class="icon-users"></i> <span>Kelola Users</span></a>
-									<ul>
-										<li><a href="<?php echo base_url('users.html') ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
-										<li><a href="<?php echo base_url('groups.html') ?>"><i class="fa fa-sitemap"></i> <span>Level</span></a></li>
-									</ul>
-								</li>
-								<li><a href="<?php echo base_url('develop') ?>"><i class="fa fa-wrench"></i> <span>Developer Tools</span></a></li>
-<?php else: ?>
-
 <?php endif ?>
 
 								<!-- /main -->

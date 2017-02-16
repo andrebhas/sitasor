@@ -9,6 +9,7 @@ class Users extends CI_Controller
         parent::__construct();
         $this->load->model('Users_model');
         $this->load->model('Groups_model');
+         $this->load->model('Desa_model');
         if (!$this->ion_auth->logged_in())
         {
             redirect('auth/login', 'refresh');
@@ -17,7 +18,7 @@ class Users extends CI_Controller
 
     public function index()
     {
-        $users = $this->ion_auth->users()->result();
+        $users = $this->Users_model->get_by_group('2');
         $user = $this->ion_auth->user()->row();
         $this->breadcrumbs->push('Users', '/users');
 
@@ -73,7 +74,7 @@ class Users extends CI_Controller
 
     public function create() 
     {
-        $grup = $this->Groups_model->get_all();
+        $desa = $this->Desa_model->get_all();
         $user = $this->ion_auth->user()->row();
         $this->breadcrumbs->push('Users', '/users');
         $this->breadcrumbs->push('tambah', '/users/create');
@@ -82,12 +83,12 @@ class Users extends CI_Controller
             'content'     => 'users/users_form', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
-            'grup'        => $grup ,
+            'desa'        => $desa ,
 
-            'groupss'    => set_value('groupss') ,
             'button' => 'Tambah',
             'action' => site_url('users/create_action'),
 		    'id' => set_value('id'),
+            'id_desa' => set_value('id_desa'),
 		    'name' => set_value('name'),
 		    'email' => set_value('email'),
 		    'username' => set_value('username'),
@@ -108,8 +109,9 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'trim|matches[password]');
         $this->form_validation->set_rules('phone', 'phone', 'trim|required');
         $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
+        $this->form_validation->set_rules('id_desa', 'id_desa', 'trim|required');
         $this->form_validation->set_rules('user_img', 'User Image', 'callback_image_upload');
-        $this->form_validation->set_rules('group_id', 'Level User', 'trim|required');
+        //$this->form_validation->set_rules('group_id', 'Level User', 'trim|required');
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 
@@ -124,12 +126,13 @@ class Users extends CI_Controller
 				'phone' => $this->input->post('phone',TRUE),
 				'alamat' => $this->input->post('alamat',TRUE),
 				'user_img' => $img,
+                'id_desa' => $this->input->post('id_desa',TRUE),
 		    );
 
             $username = $this->input->post('username',TRUE);
             $password = $this->input->post('password',TRUE);
             $email = $this->input->post('email',TRUE);
-            $group = array($this->input->post('group_id'));
+            $group = array('2');
 
             $this->ion_auth->register($username, $password, $email, $data, $group);
 
@@ -140,7 +143,7 @@ class Users extends CI_Controller
     
     public function update($id) 
     {
-        $grup = $this->Groups_model->get_all();
+        $desa = $this->Desa_model->get_all();
         $user = $this->ion_auth->user()->row();
         $this->breadcrumbs->push('Users', '/users');
         $this->breadcrumbs->push('update', '/users/update');
@@ -152,18 +155,18 @@ class Users extends CI_Controller
                 'content'     => 'users/users_form', 
                 'breadcrumbs' => $this->breadcrumbs->show(),
                 'user'        => $user ,
-                'grup'        => $grup ,
+                'desa'        => $desa ,
 
                 'button' => 'Update',
                 'action' => site_url('users/update_action'),
 				'id' => set_value('id', $row->id),
+                'id_desa' => set_value('id_desa', $row->id_desa),
 				'name' => set_value('name', $row->nama),
 				'email' => set_value('email', $row->email),
 				'username' => set_value('username', $row->username),
 				'password' => set_value('password', $row->password),
 				'phone' => set_value('phone', $row->phone),
 				'alamat' => set_value('alamat', $row->alamat),
-                'groupss'   => set_value('groupss', $row->name) ,
                 'user_img' => set_value('user_img', $row->user_img),
 		    );
             $this->load->view('layout/layout', $data);
@@ -191,11 +194,17 @@ class Users extends CI_Controller
 				'username' => $this->input->post('username',TRUE),
 				'phone' => $this->input->post('phone',TRUE),
 				'alamat' => $this->input->post('alamat',TRUE),
+                'id_desa' => $this->input->post('id_desa',TRUE),
 		    );
 
             $this->Users_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('users'));
+            if($this->ion_auth->is_admin()){
+                redirect(site_url('users'));
+            } else {
+                redirect(site_url('dashboard'));
+            }
+            
         }
     }
     
@@ -283,89 +292,6 @@ class Users extends CI_Controller
             $this->form_validation->set_message('image_upload', "No file selected");
             return false;
         }
-    }
-
-   
-    public function excel()
-    {
-        $this->load->helper('exportexcel');
-        $namaFile = "users.xls";
-        $judul = "users";
-        $tablehead = 0;
-        $tablebody = 1;
-        $nourut = 1;
-        //penulisan header
-        header("Pragma: public");
-        header("Expires: 0");
-        header("Cache-Control: must-revalidate, post-check=0,pre-check=0");
-        header("Content-Type: application/force-download");
-        header("Content-Type: application/octet-stream");
-        header("Content-Type: application/download");
-        header("Content-Disposition: attachment;filename=" . $namaFile . "");
-        header("Content-Transfer-Encoding: binary ");
-
-        xlsBOF();
-
-        $kolomhead = 0;
-        xlsWriteLabel($tablehead, $kolomhead++, "No");
-		xlsWriteLabel($tablehead, $kolomhead++, "Name");
-		xlsWriteLabel($tablehead, $kolomhead++, "Email");
-		xlsWriteLabel($tablehead, $kolomhead++, "Username");
-		xlsWriteLabel($tablehead, $kolomhead++, "Password");
-		xlsWriteLabel($tablehead, $kolomhead++, "Phone");
-		xlsWriteLabel($tablehead, $kolomhead++, "Alamat");
-		xlsWriteLabel($tablehead, $kolomhead++, "User Img");
-		xlsWriteLabel($tablehead, $kolomhead++, "Ip Address");
-		xlsWriteLabel($tablehead, $kolomhead++, "Last Login");
-		xlsWriteLabel($tablehead, $kolomhead++, "Salt");
-		xlsWriteLabel($tablehead, $kolomhead++, "Activation Code");
-		xlsWriteLabel($tablehead, $kolomhead++, "Forgotten Password Code");
-		xlsWriteLabel($tablehead, $kolomhead++, "Forgotten Password Time");
-		xlsWriteLabel($tablehead, $kolomhead++, "Remember Code");
-		xlsWriteLabel($tablehead, $kolomhead++, "Active");
-		xlsWriteLabel($tablehead, $kolomhead++, "Created On");
-
-		foreach ($this->Users_model->get_all() as $data) {
-            $kolombody = 0;
-
-            //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
-            xlsWriteNumber($tablebody, $kolombody++, $nourut);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->name);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->email);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->username);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->password);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->phone);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->alamat);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->user_img);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->ip_address);
-		    xlsWriteNumber($tablebody, $kolombody++, $data->last_login);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->salt);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->activation_code);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->forgotten_password_code);
-		    xlsWriteNumber($tablebody, $kolombody++, $data->forgotten_password_time);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->remember_code);
-		    xlsWriteLabel($tablebody, $kolombody++, $data->active);
-		    xlsWriteNumber($tablebody, $kolombody++, $data->created_on);
-
-		    $tablebody++;
-            $nourut++;
-        }
-
-        xlsEOF();
-        exit();
-    }
-
-    public function word()
-    {
-        header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=users.doc");
-
-        $data = array(
-            'users_data' => $this->Users_model->get_all(),
-            'start' => 0
-        );
-        
-        $this->load->view('users/users_doc',$data);
     }
 
 }

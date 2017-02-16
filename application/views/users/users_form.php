@@ -22,7 +22,7 @@
                 <div class="row">
                     
                     <div class="col-md-6">
-
+                        <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
                         <div class="form-group">
                             <label for="varchar">Nama <?php echo form_error('name') ?></label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<?php echo $name; ?>" />
@@ -66,11 +66,11 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="varchar">User Level <?php echo form_error('group_id') ?></label>
-                            <select class="form-control" name="group_id" id="group_id">
+                            <label for="varchar">Pilih Lokasi <?php echo form_error('id_desa') ?></label>
+                            <select <?php if($id == $user->id){ echo 'disabled ';}?> class="form-control" name="id_desa" id="id_desa">
                                 <option value=""> Pilih .... </option>
-                                <?php foreach ($grup as $g): ?>
-                                   <option <?php if ($groupss == $g->name) echo ' selected="selected" '; ?> value="<?= $g->id ?>"> <?= $g->name ?> </option> 
+                                <?php foreach ($desa as $g): ?>
+                                   <option <?php if ($id_desa == $g->id_desa) echo ' selected="selected" '; ?> value="<?= $g->id_desa ?>"> <?= $g->nama_desa ?> </option> 
                                 <?php endforeach ?>
                                 
                             </select>
@@ -83,10 +83,9 @@
                             <label for="varchar">Username <?php echo form_error('username') ?></label>
                             <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="<?php echo $username; ?>" />
                         </div> 
-                        <input type="hidden" name="id" value="<?php echo $id; ?>" /> 
                         <?php if ($button == 'Update'): ?>
                                 <button type="submit" class="btn btn-success"><?php echo $button ?></button> 
-                                <a href="<?php echo site_url('users') ?>" class="btn btn-default">Cancel</a>
+                                <a href="<?php if($this->Users_model->get_group($user->id)){echo site_url('users');}else{echo site_url('dashboard');}  ?>" class="btn btn-default">Cancel</a>
                                 <a data-toggle="modal" href="#modal_password" class="btn btn-warning" > Ubah Password </a> 
                         <?php else: ?>
                                 <div class="form-group">
@@ -98,7 +97,7 @@
                                     <input type="password" class="form-control" name="password2" id="password2" placeholder="Konfirmasi Password" />
                                 </div>
                                 <button type="submit" class="btn btn-success"><?php echo $button ?></button> 
-                                <a href="<?php echo site_url('users') ?>" class="btn btn-default">Cancel</a>
+                                <a href="<?php if($this->Users_model->get_group($user->id)){echo site_url('users');}else{echo site_url('dashboard');} ?>" class="btn btn-default">Cancel</a>
                         <?php endif ?>                        
                             
                     </div>
