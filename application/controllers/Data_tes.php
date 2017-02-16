@@ -22,7 +22,11 @@ class Data_tes extends CI_Controller
         $data_tes = $this->Data_tes_model->get_all();
         $user = $this->ion_auth->user()->row();
         $this->breadcrumbs->push('Data_tes', '/data_tes');
-
+        if($this->ion_auth->is_admin()){
+            $data_tes = $this->Data_tes_model->get_all();
+        } else {
+            $data_tes = $this->Data_tes_model->get_by_desa($user->id_desa);
+        }
         $data = array(
             'title'       => 'Data_tes' ,
             'content'     => 'histori/data_tes_list', 

@@ -23,6 +23,15 @@ class Data_tes_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    // get all
+    function get_by_desa($id_desa)
+    {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->where('status', '0');
+        $this->db->where('id_desa', $id_desa);
+        return $this->db->get($this->table)->result();
+    }
+
     // get data by id
     function get_by_id($id)
     {

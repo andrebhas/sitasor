@@ -261,7 +261,7 @@ class Users extends CI_Controller
             if ($this->ion_auth->is_admin()) {
                 redirect(site_url('users/update/'.$id)); 
             } else {
-                redirect('home/update_akun/'.$id,'refresh');
+                redirect('Dashboard/','refresh');
             }
         }
     }
