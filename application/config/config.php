@@ -60,7 +60,7 @@ $config['cache_path'] = '';
 
 $config['cache_query_string'] = FALSE;
 
-$config['encryption_key'] = 'bhas.web.id-AndreBhaskoroSuprayogi';
+$config['encryption_key'] = 'AndreBhaskoroSuprayogi-082333817317';
 
 /*
 |--------------------------------------------------------------------------

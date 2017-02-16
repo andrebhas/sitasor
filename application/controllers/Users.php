@@ -159,7 +159,7 @@ class Users extends CI_Controller
 
                 'button' => 'Update',
                 'action' => site_url('users/update_action'),
-				'id' => set_value('id', $row->id),
+				'id' => set_value('id', $row->user_id),
                 'id_desa' => set_value('id_desa', $row->id_desa),
 				'name' => set_value('name', $row->nama),
 				'email' => set_value('email', $row->email),
@@ -199,12 +199,11 @@ class Users extends CI_Controller
 
             $this->Users_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            if($this->ion_auth->is_admin()){
-                redirect(site_url('users'));
+            if ($this->ion_auth->is_admin()) {
+                redirect(site_url('users'),'refresh'); 
             } else {
-                redirect(site_url('dashboard'));
+                redirect('users/update/'.$this->input->post('id', TRUE),'refresh');
             }
-            
         }
     }
     
