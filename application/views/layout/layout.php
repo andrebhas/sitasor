@@ -99,7 +99,7 @@
 
 			<!-- Footer -->
 			<div class="text-center">
-				   &copy; 2016. <a href="<?php echo base_url() ?>"> <?php echo $this->config->item('nama_sistem') ?></a> by <a href="http://bhas.web.id" target="_blank">Lukman Danial</a>
+				   &copy; 2016. <a href="<?php echo base_url() ?>"> <?php echo $this->config->item('nama_sistem') ?></a> by <a href="https://www.facebook.com/dhanibavana" target="_blank">Lukman Danial F</a>
 			</div>
 			<!-- /footer -->
 

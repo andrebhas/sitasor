@@ -18,10 +18,10 @@ class Data_set extends CI_Controller
     {
         $data_set = $this->Data_set_model->get_all();
         $user = $this->ion_auth->user()->row();
-        $this->breadcrumbs->push('Data_set', '/data_set');
+        $this->breadcrumbs->push('Data Train', '/data_set');
 
         $data = array(
-            'title'       => 'Data_set' ,
+            'title'       => 'Data Train' ,
             'content'     => 'data_set/data_set_list', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,

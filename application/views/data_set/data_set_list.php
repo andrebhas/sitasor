@@ -9,7 +9,7 @@
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h5 class="panel-title">Data_set List</h5>
+            <h5 class="panel-title">Data Train</h5>
             <div class="heading-elements">
                 <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>

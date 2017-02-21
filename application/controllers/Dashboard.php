@@ -20,10 +20,10 @@ class Dashboard extends CI_Controller
     {
         $data_tes1 = $this->Data_tes_model->get_all();
         $user = $this->ion_auth->user()->row();
-        $this->breadcrumbs->push('Data_tes', '/data_tes');
+        $this->breadcrumbs->push('Home', '/data_tes');
 
         $data = array(
-            'title'       => 'Data_tes' ,
+            'title'       => 'Home' ,
             'content'     => 'dashboard/dashboard', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,

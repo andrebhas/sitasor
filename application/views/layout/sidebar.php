@@ -32,11 +32,11 @@
 								<!-- Main -->
 								
 								<li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-								<li><a href="<?php echo base_url('dashboard.html') ?>"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+								<li><a href="<?php echo base_url('dashboard.html') ?>"><i class="icon-home4"></i> <span>Home</span></a></li>
 <?php if ($this->ion_auth->is_admin()): ?>
 
-										<li><a href="<?php echo base_url('data_set.html') ?>"><i class="fa fa-users"></i> <span>Data Set</span></a></li>
-								<li><a href="<?php echo base_url('data_tes.html') ?>"><i class="fa fa-sitemap"></i> <span>Histori Klasifikasi</span></a></li>
+										<li><a href="<?php echo base_url('data_set.html') ?>"><i class="fa fa-users"></i> <span>Data Train</span></a></li>
+								<li><a href="<?php echo base_url('data_tes.html') ?>"><i class="fa fa-sitemap"></i> <span>Persetujuan Klasifikasi</span></a></li>
 								<li><a href="<?php echo base_url('desa.html') ?>"><i class="icon-home4"></i> <span>Data Desa</span></a></li>
 								<li>
 									<a href="<?php echo base_url('users.html') ?>"><i class="icon-users"></i> <span>Kelola Users</span></a>
