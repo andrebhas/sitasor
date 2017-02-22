@@ -20,7 +20,7 @@
         <div class="panel-body"> 
             <div class="row">
                 <div class="col-md-5 text-left">
-                    
+                    <button type="button" class="btn btn-sm btn-danger" onclick="printHistori()"><i class="icon-file-pdf"></i> Cetak</button>
 				</div>
                 <div class="col-md-7 text-center">
                     <div style="margin-top: 4px"  id="message">
@@ -89,8 +89,15 @@
     </div>
 </div>
 
-
 <script type="text/javascript">
+
+function printHistori() {
+        var alamat = '<?php echo base_url();?>' + 'dashboard/cetak_histori';
+        var printHistoriWindow = window.open(alamat, 'Rekap Histori', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=750,height=600,left=50,top=50,titlebar=yes');
+        printHistoriWindow.print();   
+        return false;
+}
+
 $(function() {
 
     $.extend( $.fn.dataTable.defaults, {
