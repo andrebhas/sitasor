@@ -7,8 +7,9 @@
         <link href="<?= base_url('assets/css/bootstrap.css')?>" rel="stylesheet">
     </head>
     <body>
-       <center><h2 class="panel-title">Rekap Histori</h2></center>
-       <br>
+	   <br><hr>
+       <center><h1 class="panel-title">Rekap Histori</h1></center>
+	   <hr><br>
        <table class="table table-sm table-bordered">
                 <thead>
                     <tr>
