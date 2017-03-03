@@ -32,7 +32,7 @@
 	<!-- Main navbar -->
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.html"><?php echo $this->config->item('nama_sistem') ?></a>
+			<a class="navbar-brand" href="<?php echo base_url() ?>"><?php echo $this->config->item('nama_sistem') ?></a>
 
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -54,9 +54,6 @@
 					</a>
 
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="#"><i class="icon-user"></i> My profile</a></li>
-						<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-						<li class="divider"></li>
 						<li><a href="<?php echo base_url('auth/logout') ?>"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>

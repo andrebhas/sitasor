@@ -24,7 +24,7 @@ class Klasifikasi extends CI_Controller {
         $this->breadcrumbs->push('Klasifikasi', '/klasifikasi');
         $this->breadcrumbs->push('tambah', 'dashboard');
         $data = array(
-            'title'       => 'Klasifikasi' ,
+            'title'       => 'Data Desa' ,
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
             'button' => 'Klasifikasi',

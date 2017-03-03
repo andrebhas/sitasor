@@ -2,7 +2,7 @@
 
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h5 class="panel-title">Sudah Input Bos</h5>
+            <h5 class="panel-title">Pesan :</h5>
             <div class="heading-elements">
                 <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="panel-body"> 
-            <center><h1>Sudah Input Bos</h1></center>  
+            <center><h1>Anda Sudah memprediksi desa</h1></center>  
         </div>
     </div>
 </div>

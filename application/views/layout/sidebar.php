@@ -36,20 +36,20 @@
 <?php if ($this->ion_auth->is_admin()): ?>
 
 										<li><a href="<?php echo base_url('data_set.html') ?>"><i class="fa fa-users"></i> <span>Data Train</span></a></li>
-								<li><a href="<?php echo base_url('data_tes.html') ?>"><i class="fa fa-sitemap"></i> <span>Persetujuan Klasifikasi</span></a></li>
-								<li><a href="<?php echo base_url('desa.html') ?>"><i class="icon-home4"></i> <span>Data Desa</span></a></li>
+								<li><a href="<?php echo base_url('data_tes.html') ?>"><i class="fa fa-sitemap"></i> <span>Konfirmasi Hasil Prediksi Desa</span></a></li>
+								<li><a href="<?php echo base_url('desa.html') ?>"><i class="icon-home4"></i> <span>Kelola Desa</span></a></li>
 								<li>
 									<a href="<?php echo base_url('users.html') ?>"><i class="icon-users"></i> <span>Kelola Users</span></a>
 								</li>
 
 <?php else: ?>
-								<li>
-									<a href="#"><i class="icon-users"></i> <span>Klasifikasi</span></a>
-									<ul>
-										<li><a href="<?php echo base_url('klasifikasi.html') ?>"><i class="fa fa-users"></i> <span>Klasifikasi</span></a></li>
-										<li><a href="<?php echo base_url('data_tes.html') ?>"><i class="fa fa-sitemap"></i> <span>Histori</span></a></li>
-									</ul>
-								</li>
+								
+									
+									
+										<li><a href="<?php echo base_url('klasifikasi.html') ?>"><i class="fa fa-users"></i> <span>Prediksi</span></a></li>
+										<li><a href="<?php echo base_url('data_tes.html') ?>"><i class="fa fa-sitemap"></i> <span>Data Hasil Prediksi Desa</span></a></li>
+								
+								
 <?php endif ?>
 
 								<!-- /main -->
