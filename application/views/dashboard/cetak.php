@@ -17,6 +17,8 @@
 						<th>Desa</th>
 						<th>Pengintput</th>
 						<th>Tanggal</th>
+                        <th>Titik Rawan</th>
+                        <th>keterangan titik Rawan</th>
 						<th>Kemiringan Lereng</th>
 						<th>Kondisi Tanah</th>
 						<th>Batuan Penyusun Lereng</th>
@@ -44,6 +46,8 @@
                         <td><?php echo $this->Desa_model->get_by_id($data_tes1->id_desa)->nama_desa ?></td>
                         <td><?php echo $this->Users_model->get_by_id($data_tes1->id_user)->username ?></td>
 						<td><?php echo $data_tes1->tanggal ?></td>
+                        <td><?php echo $data_tes1->latitude.' , '.$data_tes1->longitude ?></td>
+                        <td><?php echo $data_tes1->keterangan?></td>
 						<td><?php echo $data_tes1->kemiringan_lereng ?></td>
 						<td><?php echo $data_tes1->kondisi_tanah ?></td>
 						<td><?php echo $data_tes1->batuan_penyusun_lereng ?></td>
