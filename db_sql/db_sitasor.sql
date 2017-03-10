@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.3.11
+-- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Feb 17, 2017 at 12:48 AM
--- Server version: 5.5.54-0ubuntu0.14.04.1
--- PHP Version: 5.6.30-1+deb.sury.org~trusty+1
+-- Host: 127.0.0.1
+-- Generation Time: Mar 10, 2017 at 08:29 AM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `db_sitasor`
+-- Database: `sitasor`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `data_set`
 --
 
-CREATE TABLE `data_set` (
+CREATE TABLE IF NOT EXISTS `data_set` (
   `id_data_set` int(8) NOT NULL,
   `kemiringan_lereng` varchar(6) NOT NULL,
   `kondisi_tanah` varchar(6) NOT NULL,
@@ -140,7 +140,7 @@ INSERT INTO `data_set` (`id_data_set`, `kemiringan_lereng`, `kondisi_tanah`, `ba
 -- Table structure for table `data_tes`
 --
 
-CREATE TABLE `data_tes` (
+CREATE TABLE IF NOT EXISTS `data_tes` (
   `id_data_tes` int(11) NOT NULL,
   `id_desa` int(3) NOT NULL,
   `id_user` int(5) NOT NULL,
@@ -159,15 +159,19 @@ CREATE TABLE `data_tes` (
   `kepadatan_penduduk` varchar(6) NOT NULL,
   `usaha_mitigasi` varchar(6) NOT NULL,
   `hasil` varchar(6) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `data_tes`
 --
 
-INSERT INTO `data_tes` (`id_data_tes`, `id_desa`, `id_user`, `tanggal`, `kemiringan_lereng`, `kondisi_tanah`, `batuan_penyusun_lereng`, `curah_hujan`, `tata_air_lereng`, `vegetasi`, `pola_tanam`, `penggalian_dan_pemotongan_lereng`, `pencetakan_kolam`, `drainase`, `pembangunan_konstruksi`, `kepadatan_penduduk`, `usaha_mitigasi`, `hasil`, `status`) VALUES
-(6, 7, 3, '2017-02-16', 'Sedang', 'Sedang', 'Sedang', 'Tinggi', 'Sedang', 'Tinggi', 'Sedang', 'Sedang', 'Tinggi', 'Rendah', 'Sedang', 'Tinggi', 'Sedang', 'Aman', 0);
+INSERT INTO `data_tes` (`id_data_tes`, `id_desa`, `id_user`, `tanggal`, `kemiringan_lereng`, `kondisi_tanah`, `batuan_penyusun_lereng`, `curah_hujan`, `tata_air_lereng`, `vegetasi`, `pola_tanam`, `penggalian_dan_pemotongan_lereng`, `pencetakan_kolam`, `drainase`, `pembangunan_konstruksi`, `kepadatan_penduduk`, `usaha_mitigasi`, `hasil`, `status`, `latitude`, `longitude`, `keterangan`) VALUES
+(8, 2, 5, '2017-02-17', 'Sedang', 'Sedang', 'Sedang', 'Tinggi', 'Tinggi', 'Sedang', 'Tinggi', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Rendah', 'Sedang', 'Aman', 0, 0, 0, ''),
+(11, 7, 3, '2017-03-10', 'Sedang', 'Sedang', 'Rendah', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Sedang', 'Rendah', 'Aman', 0, -8.08038, 113.483, '');
 
 -- --------------------------------------------------------
 
@@ -175,7 +179,7 @@ INSERT INTO `data_tes` (`id_data_tes`, `id_desa`, `id_user`, `tanggal`, `kemirin
 -- Table structure for table `desa`
 --
 
-CREATE TABLE `desa` (
+CREATE TABLE IF NOT EXISTS `desa` (
   `id_desa` int(2) NOT NULL,
   `nama_desa` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -199,11 +203,11 @@ INSERT INTO `desa` (`id_desa`, `nama_desa`) VALUES
 -- Table structure for table `groups`
 --
 
-CREATE TABLE `groups` (
-  `id` mediumint(8) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `groups` (
+  `id` mediumint(8) unsigned NOT NULL,
   `name` varchar(20) NOT NULL,
   `description` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `groups`
@@ -219,8 +223,8 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) unsigned NOT NULL,
   `nama` varchar(50) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `username` varchar(100) DEFAULT NULL,
@@ -229,25 +233,26 @@ CREATE TABLE `users` (
   `alamat` varchar(256) NOT NULL,
   `user_img` varchar(100) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
-  `last_login` int(11) UNSIGNED DEFAULT NULL,
+  `last_login` int(11) unsigned DEFAULT NULL,
   `salt` varchar(255) DEFAULT NULL,
   `activation_code` varchar(40) DEFAULT NULL,
   `forgotten_password_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
+  `forgotten_password_time` int(11) unsigned DEFAULT NULL,
   `remember_code` varchar(40) DEFAULT NULL,
-  `active` tinyint(1) UNSIGNED DEFAULT NULL,
-  `created_on` int(11) UNSIGNED NOT NULL,
+  `active` tinyint(1) unsigned DEFAULT NULL,
+  `created_on` int(11) unsigned NOT NULL,
   `id_desa` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `phone`, `alamat`, `user_img`, `ip_address`, `last_login`, `salt`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `active`, `created_on`, `id_desa`) VALUES
-(1, 'Adminaa', 'admin@admin.com', 'admin', '$2y$08$r3SweaRSmnw7QKvWaGzkWea3.WHbIJMwp.bP630dB2iUihBLM7DSO', '082333817317', 'Jln Cempaka No 38 Jember', 'usr_img_e9352a4.jpg', '127.0.0.1', 1487264831, '', NULL, NULL, NULL, NULL, 1, 1268889823, 0),
-(3, 'Dhani Bavanaaa', 'dani@mail.com', 'dani', '$2y$08$cXWMEW3Rn7FpkTkjegiejeF9HDr/6IfBnmolBc1iAmyEybErA4xs.', '083857909007', 'jember', 'usr_img_f5c1223.png', '::1', 1487264904, NULL, NULL, NULL, NULL, NULL, 1, 1483685458, 7),
-(4, 'panti', 'panti@bla.com', 'panti', '$2y$08$F1gcquRuI/3IRi1nnsH4j.LcD0My2G0YXSlQxf3xIswVSG5GMNzw.', '9831419', 'panti coy', 'usr_img_280770d.png', '127.0.0.1', 1487264932, NULL, NULL, NULL, NULL, NULL, 1, 1487264440, 1);
+(1, 'Adminn', 'admin@admin.com', 'admin', '$2y$08$AgbLsEFdNbDmuZ3WEXvziOm1lGjb2cSy3WbFIiCIxIp69buQBxQ8K', '082333817317', 'Jln Cempaka No 38 Jember', 'usr_img_e9352a4.jpg', '127.0.0.1', 1489130477, '', NULL, NULL, NULL, NULL, 1, 1268889823, 0),
+(3, 'Dhani bavanaaa', 'dani@mail.com', 'dani', '$2y$08$661senlyYFmbJcjENJZWje6u9IP9fFDnkoCoNwKpvUVBBhFNYQFrq', '0838579090071', 'jember', 'usr_img_f5c1223.png', '::1', 1489129292, NULL, NULL, NULL, NULL, NULL, 1, 1483685458, 7),
+(4, 'panti', 'panti@bla.com', 'panti', '$2y$08$F1gcquRuI/3IRi1nnsH4j.LcD0My2G0YXSlQxf3xIswVSG5GMNzw.', '9831419', 'jl.panti', 'usr_img_280770d.png', '127.0.0.1', 1487660086, NULL, NULL, NULL, NULL, NULL, 1, 1487264440, 1),
+(5, 'Glagahwero', 'mandar@coba.com', 'glagah', '$2y$08$3ZSTVlEU88FL9n4Mm.T4IuM8tpksTGdcEWZkMoIYPdtVjis1/piga', '082173182719', 'madura', 'usr_img_e2463e1.png', '::1', 1487338501, NULL, NULL, NULL, NULL, NULL, 1, 1487338092, 2);
 
 -- --------------------------------------------------------
 
@@ -255,11 +260,11 @@ INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `phone`, `al
 -- Table structure for table `users_groups`
 --
 
-CREATE TABLE `users_groups` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `group_id` mediumint(8) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `users_groups` (
+  `id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `group_id` mediumint(8) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_groups`
@@ -268,7 +273,8 @@ CREATE TABLE `users_groups` (
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
 (4, 3, 2),
-(5, 4, 2);
+(5, 4, 2),
+(6, 5, 2);
 
 --
 -- Indexes for dumped tables
@@ -308,10 +314,7 @@ ALTER TABLE `users`
 -- Indexes for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
-  ADD KEY `fk_users_groups_users1_idx` (`user_id`),
-  ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`), ADD KEY `fk_users_groups_users1_idx` (`user_id`), ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -321,22 +324,22 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `data_tes`
 --
 ALTER TABLE `data_tes`
-  MODIFY `id_data_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_data_tes` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
@@ -345,8 +348,8 @@ ALTER TABLE `users_groups`
 -- Constraints for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
