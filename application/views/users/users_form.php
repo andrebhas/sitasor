@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="varchar">Alamat <?php echo form_error('alamat') ?></label>
-                            <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat" value="<?php echo $alamat; ?>" />
+               te             <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat" value="<?php echo $alamat; ?>" />
                         </div>
                          <?php if ($button == 'Update'): ?>
 
