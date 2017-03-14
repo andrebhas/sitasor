@@ -1,7 +1,6 @@
 <?php 
     $ci =& get_instance();
 ?>
-<?php echo $map['js']; ?>
 <script src="<?php echo base_url('assets/js/plugins/tables/datatables/datatables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/plugins/tables/datatables/extensions/responsive.min.js') ?>"></script>
 
@@ -28,6 +27,12 @@
                         </tr>
                         <tr>
                             <td>Desa</td> <td width="100px" align="center"> : </td><td><?php echo $nama_desa ?></td>
+                        </tr>
+                        <tr>
+                            <td>Dusun</td> <td width="100px" align="center"> : </td><td><?php echo $dusun->dusun ?></td>
+                        </tr>
+                        <tr>
+                            <td>Luas tanah</td> <td width="100px" align="center"> : </td><td><?php echo $dusun->luas_daerah ?> Ha</td>
                         </tr>
                         <tr>
                             <td>Tanggal</td> <td width="100px" align="center"> : </td><td><?php echo $tanggal ?></td>
@@ -99,14 +104,6 @@
                     </table>
                 </div>
                 <div class="col-md-6">
-
-                    <h4>Titik Rawan</h4>
-                    <p>Latitude : <?php echo $lat ?></p>
-                    <p>Longitude : <?php echo $lng ?></p>
-                    <?php echo $map['html']; ?>
-                    <h5>Keterangan</h5>
-                    <p><?php echo $ket?></p>
-                    <center><br><br><br>
                     <h4>Probabilitas Aman = <?= $prob_aman?></h4>
                     <h4>Probabilitas Rawan = <?= $prob_rawan?></h4>
                     <center><h1>Prediksi <?= $prediksi ?></h1>
@@ -132,10 +129,7 @@
                         <input type="hidden" name="kepadatan_penduduk" value="<?php echo $kepadatan_penduduk; ?>" />
                         <input type="hidden" name="usaha_mitigasi" value="<?php echo $usaha_mitigasi; ?>" />
                         <input type="hidden" name="hasil" value="<?php echo $prediksi; ?>" />
-
-                        <input type="hidden" name="latitude" value="<?php echo $lat; ?>" />
-                        <input type="hidden" name="longitude" value="<?php echo $lng; ?>" />
-                        <input type="hidden" name="keterangan" value="<?php echo $ket; ?>" />
+                        <input type="hidden" name="id_desa_detail" value="<?php echo $dusun->id_desa_detail; ?>" />
                         <br>
 
                         <button class="btn btn-md btn-success" type="submit">Simpan</button>

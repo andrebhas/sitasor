@@ -38,13 +38,14 @@ class Desa extends CI_Controller
         $this->breadcrumbs->push('Desa', '/desa');
         $this->breadcrumbs->push('detail', '/desa/read');
         $row = $this->Desa_model->get_by_id($id);
+        $dusun = $this->Desa_model->get_dusun($id);
         if ($row) {
             $data = array(
                 'title'       => 'Desa' ,
                 'content'     => 'desa/desa_read', 
                 'breadcrumbs' => $this->breadcrumbs->show(),
                 'user'        => $user ,
-                
+                'dusun'       => $dusun ,
 				'id_desa' => $row->id_desa,
 				'nama_desa' => $row->nama_desa,
 			);
@@ -65,7 +66,6 @@ class Desa extends CI_Controller
             'content'     => 'desa/desa_form', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
-
             'button' => 'Tambah',
             'action' => site_url('desa/create_action'),
 		    'id_desa' => set_value('id_desa'),
@@ -145,6 +145,39 @@ class Desa extends CI_Controller
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('desa'));
+        }
+    }
+
+    public function tambah_dusun()
+    {
+            $data = array(
+				'dusun' => $this->input->post('dusun'),
+                'luas_daerah' => $this->input->post('luas_daerah'),
+                'id_desa' => $this->input->post('id_desa'),
+		    );
+            $this->Desa_model->insert_dusun($data);
+            redirect(site_url('desa/read/'.$this->input->post('id_desa')));
+    }
+
+    public function delete_dusun($id)
+    {
+        $row = $this->Desa_model->get_dusun_by_id($id);
+        if($row) {
+            $this->Desa_model->delete_dusun($id);
+            redirect(site_url('desa/read/'.$row->id_desa));
+        }       
+    }
+
+    public function update_dusun()
+    {
+        $row = $this->Desa_model->get_dusun_by_id($this->input->post('id_desa_detail_up', TRUE));
+        if($row){
+            $data = array(
+				'dusun' => $this->input->post('dusun_up',TRUE),
+                'luas_daerah' => $this->input->post('luas_daerah_up',TRUE),
+		    );
+            $this->Desa_model->update_dusun($this->input->post('id_desa_detail_up', TRUE), $data);
+            redirect(site_url('desa/read/'.$row->id_desa));
         }
     }
 

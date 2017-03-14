@@ -1,67 +1,3 @@
-<?php echo $map['js']; ?>
-
-<script>
-update_address(<?=$latitude;?>,<?=$longitude;?>); //Set terlebih dahulu alamat lokasi pusat
-function showmap()
-{                       
-    var place = placesAutocomplete.getPlace(); //Inisialkan auto complete atau pencarian
-    if (!place.geometry) //Jika hasil tidak ada
-    {
-        return; //Abaikan
-    }
-    var lat = place.geometry.location.lat(), // Ambil Posisi Latitude Auto Complete
-    lng = place.geometry.location.lng(); // Ambil Posisi Longitude Auto Complete
-    document.getElementById('lat').value=lat; //Set Latitude pada input lat
-    document.getElementById('lng').value=lng; //Set Longitude pada input lng
-    var map = new google.maps.Map(document.getElementById('map-canvas'), { //Refresh alamat
-        center: {lat: lat, lng: lng},
-        zoom: 17
-    });
-    placesAutocomplete.bindTo('bounds', map); //Render Map Auto Complete
-    
-    //Tambah penandaan pada alamat
-    var marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        title: "Drag Untuk mencari posisi",
-        anchorPoint: new google.maps.Point(0, -29)
-    });
-    
-    if (place.geometry.viewport) {
-          map.fitBounds(place.geometry.viewport);
-        } else {
-          map.setCenter(place.geometry.location);
-          map.setZoom(17);
-    }
-    marker.setPosition(place.geometry.location);        
-    marker_0 = createMarker_map(marker);
-    
-        var alamat=document.getElementById('cari');
-            google.maps.event.addListener(marker_0, "dragend", function(event) {
-                document.getElementById('lat').value = event.latLng.lat();
-                document.getElementById('lng').value = event.latLng.lng();
-                update_address(event.latLng.lat(),event.latLng.lng());              
-            });
-}
-//Fungsi mendapatkan alamat disaat drag marker
-function update_address(lat,lng)
-{
-    var geocoder = new google.maps.Geocoder;
-    var latlng={lat: parseFloat(latitude), lng: parseFloat(longitude)};
-    geocoder.geocode({'location': latlng}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      if (results[1]) {         
-        document.getElementById('cari').value=results[0].formatted_address;
-      } else {
-        window.alert('Tidak ada hasil pencarian');
-      }
-    } else {
-      window.alert('Geocoder error: ' + status);
-    }
-  });
-}
-</script>
-
 <div class="content">
 
     <div class="panel panel-success">
@@ -82,29 +18,24 @@ function update_address(lat,lng)
                     <input type="hidden" name="id_desa" id="id_desa" value="<?php echo $id_desa;?>">
                     <input type="text" readonly class="form-control" value="<?php echo $nama_desa;?>">
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="varchar">Titik Rawan (Geser marker di map)<?php echo form_error('lat') ?></label>
-                                        <input type="text" class="form-control" name="lat" id="lat" value="<?php echo $lat; ?>" required placeholder="Latitude"/>
-                                            <input type="text" class="form-control" name="lng" id="lng" value="<?php echo $lng; ?>" required placeholder="Longitude"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="varchar">Keterangan Titik Rawan<?php echo form_error('lng') ?></label>
-                                            <textarea class="form-control" name="ket" required></textarea>
-                                        </div>
-                    </div>
-                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="text" id="cari" class="form-control" placeholder="Cari Alamat atau Tempat"/>
-                                                        </div>
-                                                    <?php echo $map['html']; ?>
-                    </div>
-                                        
-                </div>
                 <input type="hidden" class="form-control" name="id_user" id="id_user" value="<?php echo $user->id; ?>" />
                 <input type="hidden" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php echo date("Y-m-d"); ?>" />
+                <div class="form-group">
+                    <label for="text">Pilih Dusun</label>
+                    <select name="id_desa_detail" class="form-control">
+                        <option value="">Pilih</option>
+                        <?php
+                            foreach($data_dusun as $ds){
+                        ?>
+                                <option value="<?php echo $ds->id_desa_detail?>"><?php echo $ds->dusun.' Luas '.$ds->luas_daerah ?></option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                </div>
+                
                 <br>
+
                 <div class="row">
                      <div class="col-md-6">
                         <div class="form-group">

@@ -18,42 +18,12 @@ class Klasifikasi extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('googlemaps');
-
 		$user = $this->ion_auth->user()->row();
 		$id_desa = $this->Desa_model->get_by_id($user->id_desa)->id_desa;
 		$nama_desa = $this->Desa_model->get_by_id($user->id_desa)->nama_desa;
         $this->breadcrumbs->push('Klasifikasi', '/klasifikasi');
         $this->breadcrumbs->push('tambah', 'dashboard');
-
-
-        $lat = "-8.0806426";
-        $lng = '113.4835367';
-        $center = $lat.",".$lng;    
-        $cfg=array(
-            'class'                       =>'map-canvas',
-            'map_div_id'                  =>'map-canvas',
-            'center'                      =>$center,
-            'zoom'                        =>17,
-            'map_type'                    => 'HYBRID',
-            'places'                      =>TRUE, //Aktifkan pencarian alamat
-            'placesAutocompleteInputID'   =>'cari', //set sumber pencarian input
-            'placesAutocompleteBoundsMap' =>TRUE,
-            'placesAutocompleteOnChange'  =>'showmap();' //Aksi ketika pencarian dipilih
-        );
-        $this->googlemaps->initialize($cfg);
-        
-        $marker=array(
-            'position'      =>$center,
-            'draggable'     =>TRUE,
-            'title'         =>'Coba diDrag',
-            'ondragend'     =>"document.getElementById('lat').value = event.latLng.lat();
-                                document.getElementById('lng').value = event.latLng.lng();
-                                showmap();",
-        );      
-        $this->googlemaps->add_marker($marker);
-
-
+		$dusun = $this->Desa_model->get_dusun($id_desa);
         $data = array(
             'title'       => 'Data Desa' ,
             'breadcrumbs' => $this->breadcrumbs->show(),
@@ -80,12 +50,7 @@ class Klasifikasi extends CI_Controller {
 		    'usaha_mitigasi' => set_value('usaha_mitigasi'),
 		    'hasil' => set_value('hasil'),
 
-
-		    'lat'               => set_value('lat'),
-            'lng'               => set_value('lng'),
-            'map'               => $this->googlemaps->create_map(),
-            'latitude'          => $lat,
-            'longitude'         => $lng,
+			'data_dusun' => $dusun ,
 		);
 		// if($this->Klasifikasi_model->get_data_by_date($id_desa) == TRUE ){
 		// 	$data['content'] = 'klasifikasi/sudah_input';
@@ -98,7 +63,6 @@ class Klasifikasi extends CI_Controller {
 
 	public function hitung_klasifikasi()
 	{
-		$this->load->library('googlemaps');
 		$user = $this->ion_auth->user()->row();
 		$nama_desa = $this->Desa_model->get_by_id($this->input->post('id_desa',TRUE))->nama_desa;
         $this->breadcrumbs->push('Klasifikasi', '/klasifikasi');
@@ -110,38 +74,10 @@ class Klasifikasi extends CI_Controller {
             $this->index();
         } else {
 
-
-    //     		$this->load->library('googlemaps');
-
-				// $config['center'] = '37.4419, -122.1419';
-				// $config['zoom'] = 'auto';
-				// $this->googlemaps->initialize($config);
-
-				// $marker = array();
-				// $marker['position'] = '37.429, -122.1419';
-				// $this->googlemaps->add_marker($marker);
-				// $data['map'] = $this->googlemaps->create_map();
-
-        		$lat = $this->input->post('lat',TRUE);
-		        $lng = $this->input->post('lng',TRUE);
-		        $center = $lat.",".$lng;    
-		        $cfg=array(
-		            'class'                       =>'map-canvas',
-		            'map_div_id'                  =>'map-canvas',
-		            'center'                      =>$center,
-		            'zoom'                        =>17,
-		            'map_type'                    => 'HYBRID',
-		            'map_height'				  => '250px'
-		        );
-		        $this->googlemaps->initialize($cfg);
-
-				$marker=array(
-		            'position'      =>$center,
-		        );      
-		        $this->googlemaps->add_marker($marker);
-
 				$id_desa = $this->input->post('id_desa',TRUE);
 				$id_user = $this->input->post('id_user',TRUE);
+				$id_desa_detail = $this->input->post('id_desa_detail',TRUE);
+				$dusun = $this->Desa_model->get_dusun_by_id($id_desa_detail);
 				$tanggal = $this->input->post('tanggal',TRUE);
 				$data = array(
 					'title'       => 'Klasifikasi' ,
@@ -168,12 +104,7 @@ class Klasifikasi extends CI_Controller {
 					'pembangunan_konstruksi' => $this->input->post('pembangunan_konstruksi',TRUE),
 					'kepadatan_penduduk' => $this->input->post('kepadatan_penduduk',TRUE),
 					'usaha_mitigasi' => $this->input->post('usaha_mitigasi',TRUE),
-
-					'map' => $this->googlemaps->create_map(),
-					'lat' => $this->input->post('lat',TRUE),
-					'lng' => $this->input->post('lng',TRUE),
-					'ket' => $this->input->post('ket',TRUE),
-
+					'dusun'	=> $dusun ,
 				);
 
 				 /*  1. Ambil data ---> P(kemiringan_lereng = ? | Y= ?) = hasil_bagi  */
@@ -275,9 +206,8 @@ class Klasifikasi extends CI_Controller {
 				'kepadatan_penduduk' => $this->input->post('kepadatan_penduduk',TRUE),
 				'usaha_mitigasi' => $this->input->post('usaha_mitigasi',TRUE),
 				'hasil' => $this->input->post('hasil',TRUE),
-				'latitude' => $this->input->post('latitude',TRUE),
-				'longitude' => $this->input->post('longitude',TRUE),
-				'keterangan' => $this->input->post('keterangan',TRUE),
+				
+				'id_desa_detail' => $this->input->post('id_desa_detail',TRUE) ,
 		    );
 
             $this->Data_tes_model->insert($data);

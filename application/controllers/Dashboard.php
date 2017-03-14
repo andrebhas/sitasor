@@ -21,14 +21,15 @@ class Dashboard extends CI_Controller
         $data_tes1 = $this->Data_tes_model->get_all();
         $user = $this->ion_auth->user()->row();
         $this->breadcrumbs->push('Home', '/data_tes');
-
+        $dusun = $this->Desa_model->get_dusun_by_id($user->id_desa);
         $data = array(
             'title'       => 'Home' ,
             'content'     => 'dashboard/dashboard', 
             'breadcrumbs' => $this->breadcrumbs->show(),
             'user'        => $user ,
             
-            'dashboard_data' => $data_tes1
+            'dashboard_data' => $data_tes1,
+            'dusun' => $dusun ,
         );
 
         $this->load->view('layout/layout', $data);
@@ -37,8 +38,11 @@ class Dashboard extends CI_Controller
     public function cetak_histori() 
     {
         $data_tes1 = $this->Data_tes_model->get_all();
+        $user = $this->ion_auth->user()->row();
+        $dusun = $this->Desa_model->get_dusun_by_id($user->id_desa);
         $data = array(
-            'dashboard_data' => $data_tes1
+            'dashboard_data' => $data_tes1,
+            'dusun' =>  $dusun ,
         );
         $this->load->view('dashboard/cetak', $data);
     }

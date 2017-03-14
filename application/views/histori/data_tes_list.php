@@ -31,10 +31,9 @@
                     <tr>
                         <th width="50px">No</th>
 						<th>Desa</th>
+                        <th>Daerah</th>
 						<th>Pengintput</th>
 						<th>Tanggal</th>
-            <th>Titik Rawan</th>
-            <th>keterangan titik Rawan</th>
 						<th>Kemiringan Lereng</th>
 						<th>Kondisi Tanah</th>
 						<th>Batuan Penyusun Lereng</th>
@@ -61,10 +60,9 @@
                     <tr>
 						<td><?php echo ++$start ?></td>
                         <td><?php echo $this->Desa_model->get_by_id($data_tes->id_desa)->nama_desa ?></td>
+                        <td><?php echo "Dusun ".$this->Desa_model->get_dusun_by_id($data_tes->id_desa_detail)->dusun." - Luas Daerah ".$this->Desa_model->get_dusun_by_id($data_tes->id_desa_detail)->luas_daerah;?></td>
                         <td><?php echo $this->Users_model->get_by_id($data_tes->id_user)->username ?></td>
 						<td><?php echo $data_tes->tanggal ?></td>
-            <td><?php echo $data_tes->latitude.' , '.$data_tes->longitude ?></td>
-            <td><?php echo $data_tes->keterangan?></td>
 						<td><?php echo $data_tes->kemiringan_lereng ?></td>
 						<td><?php echo $data_tes->kondisi_tanah ?></td>
 						<td><?php echo $data_tes->batuan_penyusun_lereng ?></td>

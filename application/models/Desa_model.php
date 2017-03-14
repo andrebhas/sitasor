@@ -52,6 +52,35 @@ class Desa_model extends CI_Model
         $this->db->insert($this->table, $data);
     }
 
+    function get_dusun_by_id($id)
+    {
+        $this->db->where('id_desa_detail', $id);
+        return $this->db->get('detail_desa')->row();
+    }
+
+    function get_dusun_by_id_desa($id_desa)
+    {
+        $this->db->where('id_desa', $id_desa);
+        return $this->db->get('detail_desa')->result();
+    }
+
+    function insert_dusun($data)
+    {
+        $this->db->insert('detail_desa', $data);
+    }
+
+    function delete_dusun($id)
+    {
+        $this->db->where('id_desa_detail', $id);
+        $this->db->delete('detail_desa');
+    }
+
+    function update_dusun($id, $data)
+    {
+        $this->db->where('id_desa_detail', $id);
+        $this->db->update('detail_desa', $data);
+    }
+
     // update data
     function update($id, $data)
     {
@@ -64,6 +93,12 @@ class Desa_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
+    }
+
+    function get_dusun($id)
+    {
+        $this->db->where('id_desa', $id);
+        return $this->db->get('detail_desa')->result();
     }
 
 }
